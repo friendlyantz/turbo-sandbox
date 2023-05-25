@@ -14,7 +14,7 @@
   </div>
 
   <div id="articles" class="min-w-full">
-  <% @articles.each do |article| %>
+  <% @articles.reverse.each do |article| %>
     <%= render article %>
     <p>
       <%= link_to "Show this article", article,  class: "rounded-lg py-2 px-2 bg-blue-600 text-white block font-medium" %>
