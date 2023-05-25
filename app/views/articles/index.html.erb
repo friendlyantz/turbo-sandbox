@@ -11,18 +11,6 @@
     <%= render "form", article: Article.new %>
   </div>
   <br>
-  <div data-controller="article-sort">
-    <label for="sort_by">Sort by:</label>
-    <select name="sort_by"
-       id="sort_by" 
-      data-action="article-sort#sort"
-      data-article-sort-target="select"
-      >
-        <option value="time_posted" <%= 'selected' if params[:sort_by] == 'time_posted' %>>Created At</option>
-        <option value="time_posted_reverse" <%= 'selected' if params[:sort_by] == 'time_posted_reverse' %>>Created At Reversed</option>
-        <option value="alphabetical" <%= 'selected' if params[:sort_by] == 'alphabetical' %>>A-Z</option>
-        <option value="alphabetical_reverse" <%= 'selected' if params[:sort_by] == 'alphabetical_reverse' %>>Z-A</option>
-      </select>
-      </div>
-      <%= render "articles" %>
-    </div>
+  <%= render "sort" %>
+  <%= render "articles" %>
+</div>
