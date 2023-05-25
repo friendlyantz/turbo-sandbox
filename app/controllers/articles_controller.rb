@@ -26,9 +26,11 @@ class ArticlesController < ApplicationController
     respond_to do |format|
       if @article.save
         format.html { redirect_to article_url(@article), notice: "Article was successfully created." }
+        format.turbo_stream { render :create, locals: { article: @article } }
         format.json { render :show, status: :created, location: @article }
       else
         format.html { render :new, status: :unprocessable_entity }
+        format.turbo_stream { render :new, status: :unprocessable_entity, locals: { article: @article } }
         format.json { render json: @article.errors, status: :unprocessable_entity }
       end
     end

@@ -1,0 +1,4 @@
+<%= turbo_stream.prepend "articles" do %> 
+<%# articles above refers to id %>
+  <%= render partial: "article", locals: { article: @article } %>
+<% end %>
