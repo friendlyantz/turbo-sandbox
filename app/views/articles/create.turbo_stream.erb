@@ -1,4 +1,10 @@
-<%= turbo_stream.prepend "articles" do %> 
-<%# articles above refers to id %>
+<%= turbo_stream.prepend "articles" do %>
+  <%# articles above refers to id %>
   <%= render partial: "article", locals: { article: @article } %>
 <% end %>
+
+<%= turbo_stream.replace "new_article",
+  # partial: "form", 
+  # locals: { article: Article.new }
+  "replacing content"
+%>
