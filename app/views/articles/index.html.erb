@@ -10,10 +10,18 @@
     <h2 class="font-bold text-4xl">New Article</h2>
     <%= render "form", article: Article.new %>
   </div>
-
   <div data-controller="article-sort">
-  </div>
-
-  <%= render "articles" %>
-
-</div>
+    <label for="sort_by">Sort by:</label>
+    <select name="sort_by"
+       id="sort_by" 
+      data-action="article-sort#sort"
+      data-article-sort-target="select"
+      >
+      <option value="time_posted" <%= 'selected' if params[:sort_by] == 'time_posted' %>>
+        Created At
+      </option>
+      <%# <option value="updated_at">Updated At</option> %>
+      </select>
+      </div>
+      <%= render "articles" %>
+    </div>
