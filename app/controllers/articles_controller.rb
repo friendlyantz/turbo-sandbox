@@ -15,6 +15,11 @@ class ArticlesController < ApplicationController
     else
       Article.order(created_at: :desc)
     end
+
+    respond_to do |format|
+      format.html 
+      format.turbo_stream
+    end
   end
 
   # GET /articles/1 or /articles/1.json
