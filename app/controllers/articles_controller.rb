@@ -3,7 +3,18 @@ class ArticlesController < ApplicationController
 
   # GET /articles or /articles.json
   def index
-    @articles = Article.all
+    @articles = case params[:sort_by]
+    when 'alphabetical'
+      Article.order(text: :asc)
+    when 'alphabetical_reverse'
+      Article.order(text: :desc)
+    when 'time_posted'
+      Article.order(created_at: :desc)
+    when 'time_posted_reverse'
+      Article.order(created_at: :asc)
+    else
+      Article.order(created_at: :desc)
+    end
   end
 
   # GET /articles/1 or /articles/1.json
@@ -67,6 +78,6 @@ class ArticlesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def article_params
-      params.require(:article).permit(:text, :content)
+      params.require(:article).permit(:text, :content, :sort_by)
     end
 end
